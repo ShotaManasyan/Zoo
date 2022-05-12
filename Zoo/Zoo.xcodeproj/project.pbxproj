@@ -10,9 +10,10 @@
 		DF94DF6F282AC95300E65361 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94DF6E282AC95300E65361 /* AppDelegate.swift */; };
 		DF94DF71282AC95300E65361 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94DF70282AC95300E65361 /* SceneDelegate.swift */; };
 		DF94DF73282AC95300E65361 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94DF72282AC95300E65361 /* ViewController.swift */; };
-		DF94DF76282AC95300E65361 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF94DF74282AC95300E65361 /* Main.storyboard */; };
 		DF94DF78282AC95400E65361 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF94DF77282AC95400E65361 /* Assets.xcassets */; };
 		DF94DF7B282AC95400E65361 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF94DF79282AC95400E65361 /* LaunchScreen.storyboard */; };
+		DFCD3EAB282D74F100EC8B70 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD3EAA282D74F100EC8B70 /* SecondViewController.swift */; };
+		DFCD3EAF282D757100EC8B70 /* ReusableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCD3EAE282D757100EC8B70 /* ReusableButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +21,11 @@
 		DF94DF6E282AC95300E65361 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF94DF70282AC95300E65361 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		DF94DF72282AC95300E65361 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DF94DF75282AC95300E65361 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DF94DF77282AC95400E65361 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF94DF7A282AC95400E65361 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF94DF7C282AC95400E65361 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DFCD3EAA282D74F100EC8B70 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		DFCD3EAE282D757100EC8B70 /* ReusableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +61,8 @@
 				DF94DF6E282AC95300E65361 /* AppDelegate.swift */,
 				DF94DF70282AC95300E65361 /* SceneDelegate.swift */,
 				DF94DF72282AC95300E65361 /* ViewController.swift */,
-				DF94DF74282AC95300E65361 /* Main.storyboard */,
+				DFCD3EAA282D74F100EC8B70 /* SecondViewController.swift */,
+				DFCD3EAE282D757100EC8B70 /* ReusableButton.swift */,
 				DF94DF77282AC95400E65361 /* Assets.xcassets */,
 				DF94DF79282AC95400E65361 /* LaunchScreen.storyboard */,
 				DF94DF7C282AC95400E65361 /* Info.plist */,
@@ -127,7 +130,6 @@
 			files = (
 				DF94DF7B282AC95400E65361 /* LaunchScreen.storyboard in Resources */,
 				DF94DF78282AC95400E65361 /* Assets.xcassets in Resources */,
-				DF94DF76282AC95300E65361 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +140,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFCD3EAB282D74F100EC8B70 /* SecondViewController.swift in Sources */,
+				DFCD3EAF282D757100EC8B70 /* ReusableButton.swift in Sources */,
 				DF94DF73282AC95300E65361 /* ViewController.swift in Sources */,
 				DF94DF6F282AC95300E65361 /* AppDelegate.swift in Sources */,
 				DF94DF71282AC95300E65361 /* SceneDelegate.swift in Sources */,
@@ -147,14 +151,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DF94DF74282AC95300E65361 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DF94DF75282AC95300E65361 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DF94DF79282AC95400E65361 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
