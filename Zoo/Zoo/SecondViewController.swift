@@ -12,7 +12,14 @@ class SecondViewController: UIViewController {
     
     var stackView: UIStackView!
     var animalType: ReusableButton!
-    var animalTypesData: [String] = ["Birds","Fish","Mammals","Reptiles","Amphibians","Minibeasts"]
+    var birds = "Birds"
+    var fish = "Fishs"
+    var mammals = "Mammals"
+    var reptiles = "Reptiles"
+    var amphibians = "Amphibians"
+    var minibeasts = "Arthropod"
+    
+    lazy var animalTypesData: [String] = [birds, fish, mammals, reptiles, amphibians, minibeasts]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +35,7 @@ class SecondViewController: UIViewController {
         for type in animalTypesData {
             animalType = ReusableButton()
             animalType.translatesAutoresizingMaskIntoConstraints = false
-            animalType.text = type
+            animalType.text = type.localized
             animalType.setImage = UIImage(named: type)
             stackView.addArrangedSubview(animalType)
         }

@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  Zoo
+
+  Created by Shota Manasyan on 16.05.22.
+  
+*/
+
+"welcomeTitle" = "Welcome Zoo";
+"startButtonTitle" = "Get Start";
+"Birds" = "Birds";
+"Fishs"  = "Fishs";
+"Mammals" = "Mammals";
+"Reptiles" = "Reptiles";
+"Amphibians" = "Amphibians";
+"Arthropod" = "Arthropod";
