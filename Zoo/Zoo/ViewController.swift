@@ -16,18 +16,16 @@ class ViewController: UIViewController {
     var buttonTitle: String!
     let languagesData = [ "English", "Հայերեն", "Русский"]
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
                 
-        initStackView()
         initWelcomeLabel()
         initLanguagePickerView()
         initStartButton()
         activateConstraint()
-        
+        preSelectLanguage()
     }
     
     @objc func startButtonTapped() {
@@ -36,11 +34,29 @@ class ViewController: UIViewController {
         navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func changeLanguage(str: String) {
-        welcomeLabel.text = "welcomeTitle".addLocalizableString(str: str)
-        startButton.setTitle("startButtonTitle".addLocalizableString(str: str), for: .normal)
+    func changeLanguage() {
+        if let key = UserDefaults.standard.string(forKey: "preferedLanguage") {
+            welcomeLabel.text = "welcomeTitle".addLocalizableString(str: key)
+            startButton.setTitle("startButtonTitle".addLocalizableString(str: key), for: .normal)
+        }
     }
     
+    func preSelectLanguage() {
+        guard let key = UserDefaults.standard.string(forKey: "preferedLanguage") else {
+            languagePickerView.selectRow(0, inComponent: 0, animated: false)
+            return
+        }
+        
+        if key == "en" {
+            languagePickerView.selectRow(0, inComponent: 0, animated: false)
+        } else if key == "hy" {
+            languagePickerView.selectRow(1, inComponent: 0, animated: false)
+        } else if key == "ru" {
+            languagePickerView.selectRow(2, inComponent: 0, animated: false)
+        }
+        
+        changeLanguage()
+    }
 }
 
 extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
@@ -60,33 +76,29 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         switch row {
-        case 0: changeLanguage(str: "en")
-        case 1: changeLanguage(str: "hy")
-        case 2: changeLanguage(str: "ru")
+        case 0:
+            UserDefaults.standard.set("en", forKey: "preferedLanguage")
+        case 1:
+            UserDefaults.standard.set("hy", forKey: "preferedLanguage")
+        case 2:
+            UserDefaults.standard.set("ru", forKey: "preferedLanguage")
         default:
             break
         }
+        changeLanguage()
     }
 }
 extension ViewController {
-    
-    func initStackView() {
-        stackView = UIStackView()
-        stackView.spacing = 40
-        stackView.axis = .vertical
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(stackView)
-    }
     
     func initWelcomeLabel() {
         welcomeLabel = UILabel()
         welcomeLabel.text = "welcomeTitle".localized
         welcomeLabel.font = .systemFont(ofSize: 25)
+        welcomeLabel.numberOfLines = 0
         welcomeLabel.textAlignment = .center
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        stackView.addArrangedSubview(welcomeLabel)
+        view.addSubview(welcomeLabel)
     }
     
     func initLanguagePickerView() {
@@ -95,7 +107,7 @@ extension ViewController {
         languagePickerView.dataSource = self
         languagePickerView.delegate = self
         
-        stackView.addArrangedSubview(languagePickerView)
+        view.addSubview(languagePickerView)
     }
     
     func initStartButton() {
@@ -107,14 +119,20 @@ extension ViewController {
         startButton.translatesAutoresizingMaskIntoConstraints = false
         startButton.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
         
-        stackView.addArrangedSubview(startButton)
+        view.addSubview(startButton)
     }
     
     func activateConstraint() {
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+            welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            welcomeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            welcomeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            
+            startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -25),
+            startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            
+            languagePickerView.bottomAnchor.constraint(equalTo: startButton.topAnchor, constant: -80)
         ])
     }
 }

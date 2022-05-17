@@ -22,5 +22,4 @@ extension String {
         
         return NSLocalizedString(self, tableName: nil, bundle: bundle!, value: "", comment: "")
     }
-    
 }
