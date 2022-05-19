@@ -8,32 +8,48 @@
 import Foundation
 import UIKit
 
+protocol ReusableButtonDelegate: AnyObject {
+    func didTouchDown(sender: ReusableButton)
+    func didTouchCancel(sender: ReusableButton)
+    func didTappedButton(with id: Int, buttonModel: ReusableButtonModel)
+}
+
+struct ReusableButtonModel {
+    let name: String?
+    let image: UIImage?
+}
+
 class ReusableButton: UIStackView {
     
     var buttonNameLabel: UILabel!
     var button: UIButton!
-    private var heightConstraint: NSLayoutConstraint!
+    var heightConstraint: NSLayoutConstraint! {
+        didSet {
+            layoutIfNeeded()
+        }
+    }
+    weak var delegate: ReusableButtonDelegate?
     
     var text: String? {
-        set {
-            return buttonNameLabel.text = newValue
-        }
-        get {
-            return self.text
+        didSet {
+            buttonNameLabel.text = text
         }
     }
     
-    var setImage: UIImage? {
-        set {
-            return button.setImage(newValue, for: .normal)
-        }
-        get {
-            return self.setImage
+    var image: UIImage? {
+        didSet {
+            button.setImage(image, for: .normal)
         }
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    var id: Int = 0 {
+        didSet {
+            button.tag = id
+        }
+    }
+    
+    init() {
+        super.init(frame: .zero)
         
         commonInit()
     }
@@ -54,11 +70,14 @@ class ReusableButton: UIStackView {
     }
     
     @objc func touchDown() {
-        heightConstraint.constant = 200
+        delegate?.didTouchDown(sender: self)
     }
     
     @objc func touchCancel() {
-        heightConstraint.constant = 50
+        delegate?.didTouchCancel(sender: self)
+        
+        let model = ReusableButtonModel(name: text, image: image)
+        delegate?.didTappedButton(with: id, buttonModel: model)
     }
 }
 
@@ -88,4 +107,3 @@ extension ReusableButton {
         heightConstraint.isActive = true
     }
 }
-
