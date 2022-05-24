@@ -22,7 +22,7 @@ class AnimalListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return animalList.count
+        return 0
         
     }
 

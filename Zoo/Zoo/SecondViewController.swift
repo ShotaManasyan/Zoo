@@ -28,7 +28,7 @@ class SecondViewController: UIViewController {
             let animalType = ReusableButton()
             animalType.id = index
             animalType.translatesAutoresizingMaskIntoConstraints = false
-            animalType.text = type.localized
+            animalType.text = NSLocalizedString(type, comment: "")
             animalType.image = UIImage(named: type)
             stackView.addArrangedSubview(animalType)
             animalType.delegate = self
@@ -69,7 +69,6 @@ extension SecondViewController {
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 25),
-            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -25)
         ])
     }
 }

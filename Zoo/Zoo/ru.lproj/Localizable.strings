@@ -6,7 +6,7 @@
   
 */
 
-"welcomeTitle" = "Добро пожаловать Зоопарк";
+"Welcome_title" = "Добро пожаловать Зоопарк";
 "startButtonTitle" = "Начать";
 "Birds" = "Птицы";
 "Fishs"  = "Рыбы";
