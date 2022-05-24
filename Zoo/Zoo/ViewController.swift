@@ -13,7 +13,6 @@ class ViewController: UIViewController {
     var languagePickerView: UIPickerView!
     var startButton: UIButton!
     var stackView: UIStackView!
-    var buttonTitle: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,9 +24,11 @@ class ViewController: UIViewController {
         activateConstraint()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .action,
+            image: UIImage(named: "language"),
+            style: .plain,
             target: self,
             action: #selector(gearButtonPressed)
+           
         )
     }
     
@@ -57,8 +58,7 @@ extension ViewController {
     
     func initStartButton() {
         startButton = UIButton()
-        buttonTitle = NSLocalizedString("startButtonTitle", comment: "")
-        startButton.setTitle(buttonTitle, for: .normal)
+        startButton.setTitle(NSLocalizedString("startButtonTitle", comment: ""), for: .normal)
         startButton.layer.cornerRadius = 8
         startButton.backgroundColor = .systemBlue
         startButton.translatesAutoresizingMaskIntoConstraints = false
