@@ -6,7 +6,7 @@
   
 */
 
-"welcomeTitle" = "Welcome Zoo";
+"Welcome_title" = "Welcome Zoo";
 "startButtonTitle" = "Get Start";
 "Birds" = "Birds";
 "Fishs"  = "Fishs";

@@ -9,36 +9,47 @@ import Foundation
 import UIKit
 
 class SecondViewController: UIViewController {
-    
+
     var stackView: UIStackView!
-    var animalType: ReusableButton!
-    var birds = "Birds"
-    var fish = "Fishs"
-    var mammals = "Mammals"
-    var reptiles = "Reptiles"
-    var amphibians = "Amphibians"
-    var minibeasts = "Arthropod"
     
-    lazy var animalTypesData: [String] = [birds, fish, mammals, reptiles, amphibians, minibeasts]
+    lazy var animalTypesData: [String] = ["Birds", "Fishs", "Mammals", "Reptiles", "Amphibians", "Arthropod"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        
         initStackView()
         activateConstraints()
         initanimalTypesButton()
     }
     
     func initanimalTypesButton() {
-        for type in animalTypesData {
-            animalType = ReusableButton()
+        for (index, type) in animalTypesData.enumerated() {
+            let animalType = ReusableButton()
+            animalType.id = index
             animalType.translatesAutoresizingMaskIntoConstraints = false
-            animalType.text = type.localized
-            animalType.setImage = UIImage(named: type)
+            animalType.text = NSLocalizedString(type, comment: "")
+            animalType.image = UIImage(named: type)
             stackView.addArrangedSubview(animalType)
+            animalType.delegate = self
         }
+    }
+}
+
+extension SecondViewController: ReusableButtonDelegate {
+    func didTappedButton(with id: Int, buttonModel: ReusableButtonModel) {
+        print("button with \(id) tapped")
+    }
+    
+    func didTouchDown(sender: ReusableButton) {
+        sender.heightConstraint.constant = 200
+    }
+    
+    func didTouchCancel(sender: ReusableButton) {
+        sender.heightConstraint.constant = 50
+        let viewController = AnimalListTableViewController()
+        viewController.modalPresentationStyle = .fullScreen
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
